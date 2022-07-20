@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppService} from "./app.service";
 
 @Component({
   selector: 'jest-ngc-esbuild-transformer-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'jest-ngc-esbuild-transformer';
+
+  constructor(private readonly appService: AppService) {
+  }
+
+  isEnabled(): boolean {
+    return this.appService.isEnabled();
+  }
 }
