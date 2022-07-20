@@ -5,9 +5,9 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve",
+    "serve": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "yarn run nx build transformer && yarn run nx test"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +36,9 @@
     "@nrwl/cypress": "14.4.3",
     "@nrwl/eslint-plugin-nx": "14.4.3",
     "@nrwl/jest": "14.4.3",
+    "@nrwl/js": "14.4.3",
     "@nrwl/linter": "14.4.3",
+    "@nrwl/node": "^14.4.3",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "14.4.3",
     "@types/jest": "27.4.1",
