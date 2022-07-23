@@ -1,4 +1,9 @@
-interface TransformerConfig {}
+import {buildSync} from 'esbuild';
+import {readFileSync} from 'fs';
+import {randomUUID} from 'crypto';
+
+interface TransformerConfig {
+}
 
 interface TransformOptions<TransformerConfig> {
   supportsDynamicImport: boolean;
@@ -26,18 +31,22 @@ type TransformedSource = {
  */
 const JestNgcEsbuildTransformer = {
   process(sourceText: string, sourcePath: string, options: TransformOptions<TransformerConfig>): TransformedSource {
-    console.log('--- TRANSFORMER ---');
-    console.log({ sourcePath, sourceText });
-    console.log('--- TRANSFORMER END ---');
+    const fileName = randomUUID().toString() + '.js';
+    const outFile = './dist/ngc-jest-transform/' + fileName;
+
+    buildSync({
+      entryPoints: [sourcePath],
+      format: "iife",
+      platform: "node",
+      bundle: true,
+      outfile: outFile
+    });
+
+    const result = readFileSync(outFile).toString();
+
     return {
-      code: `
-      describe("Autobots", () => {
-        it("Find Megatron", () => {
-          expect(true).toEqual(true);
-        })
-      })`,
-      map: ''
-    }
+      code: result
+    };
   }
 };
 
