@@ -1,5 +1,5 @@
 import {buildSync} from 'esbuild';
-import {readFileSync} from 'fs';
+import {readFileSync, writeFileSync} from 'fs';
 import {randomUUID} from 'crypto';
 
 interface TransformerConfig {
@@ -34,13 +34,15 @@ const JestNgcEsbuildTransformer = {
     const fileName = randomUUID().toString() + '.js';
     const outFile = './dist/ngc-jest-transform/' + fileName;
 
-    buildSync({
+    const buildResult = buildSync({
       entryPoints: [sourcePath],
       format: "iife",
       platform: "node",
       bundle: true,
       outfile: outFile
     });
+
+    writeFileSync('./dist/ngc-jest-transform/build.log', JSON.stringify(buildResult, null, 2));
 
     const result = readFileSync(outFile).toString();
 
