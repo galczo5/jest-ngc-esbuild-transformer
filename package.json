@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~14.0.0",
     "@angular/router": "~14.0.0",
     "@nrwl/angular": "14.4.3",
+    "ng-esbuild-transformer": "^1.0.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -53,7 +54,6 @@
     "eslint-plugin-cypress": "^2.10.3",
     "jest": "27.5.1",
     "jest-preset-angular": "~11.1.2",
-    "nanoid": "^4.0.0",
     "nx": "14.4.3",
     "prettier": "^2.6.2",
     "ts-jest": "27.1.4",

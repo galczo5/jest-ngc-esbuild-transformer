@@ -2,7 +2,6 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "jest-ngc-esbuild-transformer": "apps/jest-ngc-esbuild-transformer",
-    "transformer": "libs/transformer"
+    "jest-ngc-esbuild-transformer": "apps/jest-ngc-esbuild-transformer"
   }
 }
